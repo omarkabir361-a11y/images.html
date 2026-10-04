@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>DAY1 ASSIGNMENT</h1>
+    <p>  part A: User Manual Procedure
+Setting Up a GitHub Repository and Making Your First Commit
+Prerequisites
+Before starting this procedure, ensure you have the following:
+A computer running Windows, macOS, or Linux with an active internet connection.
+A registered account on GitHub.
+Git installed on your computer.
+Step-by-Step Instructions
+Open your terminal or command prompt application.
+Expected Result: A command line window opens displaying your system prompt.
+Navigate to the local folder where you want to store your project using the cd command.
+Expected Result: The working directory in your terminal updates to your specified project folder path.
+Initialize a local Git repository by typing git init and pressing Enter.
+Expected Result: A success message appears stating Initialized empty Git repository in....
+Create a new file named README.md by running echo "# My First Project" > README.md.
+Expected Result: A new file titled README.md containing the header # My First Project is created in your folder.
+Stage the newly created file for tracking by typing git add README.md and pressing Enter.
+Expected Result: The file is placed in the staging area with no error output returned.
+Commit the staged file by running git commit -m "Initial commit".
+Expected Result: Terminal displays a confirmation showing 1 file changed, 1 insertion(+) along with a commit hash.
+Log in to GitHub in your web browser and click the "+" icon in the top-right corner to select "New repository".
+Expected Result: You are directed to the "Create a new repository" form page.
+Enter a name for your repository in the "Repository name" field and click "Create repository".
+Expected Result: GitHub creates the remote repository and loads a quick setup page containing repository URLs.
+Copy the HTTPS repository URL from the GitHub setup page.
+Expected Result: The URL string (e.g., [https://github.com/username/repository-name.git](https://github.com/username/repository-name.git)) is stored in your clipboard.
+Link your local repository to GitHub by running git remote add origin <URL> (replace <URL> with your copied link).
+Expected Result: The remote destination named origin is added silently without errors.
+Rename your default branch to main by typing git branch -M main and pressing Enter.
+Expected Result: Your default local branch is updated to main.
+Push your local commit to GitHub by running git push -u origin main.
+Expected Result: Terminal displays transfer progress culminating in Branch 'main' set up to track remote branch 'main' from 'origin'.
+Screenshot Description
+Image Placement: Placed after Step 8.
+Description: A screenshot of the GitHub "Create a new repository" web form. It shows the repository name field filled in as my-first-project, the visibility setting selected as "Public", and a highlighted red callout box around the green "Create repository" button at the bottom of the page.
+Troubleshooting Note
+Issue: fatal: remote origin already exists.
+Cause: You have already attached a remote URL to this local Git repository.
+Solution: Remove the existing link by running git remote remove origin, then rerun Step 10 with your correct repository link.
+Part B: API Reference Entry
+Create Task Endpoint
+Creates a new task item within a project management workspace for an authenticated user.
+HTTP Method: POST
+Endpoint Path: /api/v1/tasks
+Request Headers
+Header Name
+Type
+Required
+Description
+Authorization
+String
+Yes
+Bearer token format: Bearer <JWT_TOKEN>
+Content-Type
+String
+Yes
+Must be set to application/json
+
+Request Parameters
+Body Parameters
+Parameter
+Type
+Required
+Description
+title
+String
+Yes
+Short summary of the task (1–255 characters).
+description
+String
+No
+Detailed explanation or notes for the task.
+assignee_id
+String (UUID)
+Yes
+Unique identifier of the assigned user.
+due_date
+String (ISO 8601)
+Yes
+Due date in UTC format (YYYY-MM-DDTHH:MM:SSZ).
+priority
+String
+Yes
+Allowed values: "low", "medium", "high".
+
+HTTP Response Codes
+201 Created: Task successfully created. Returns the created task object.
+400 Bad Request: Request payload missing required fields or containing invalid data types/enums.
+401 Unauthorized: Authentication token is missing, expired, or invalid.
+404 Not Found: The specified assignee_id does not exist in the system.
+500 Internal Server Error: An unexpected server error occurred while saving the task.
+
+</p>
+</body>
+</html>
